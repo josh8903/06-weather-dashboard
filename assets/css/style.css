@@ -1,0 +1,24 @@
+header {
+    height: 65px;
+    background-color: #404040;
+    color: white;
+    text-align: center;
+    font-size: 2rem;
+    line-height: 65px;
+}
+
+h5 {
+    padding-top: 5px;
+    margin-bottom: 0px;
+}
+
+#searchBar {
+    padding-bottom: 10px;
+}
+
+#cityButton {
+    width: 300px;
+    height: 60px;
+    text-align: left;
+    margin-bottom: -1px;
+}
