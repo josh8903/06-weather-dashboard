@@ -1,5 +1,6 @@
 var queryUrl = "http://api.openweathermap.org/data/2.5/forecast?q=",
-    apiKey = "&appid=6cc8bbd0f9c3b88ec510c02440bb3c5a";
+    apiKey = "&appid=6cc8bbd0f9c3b88ec510c02440bb3c5a",
+    date = moment().format("(MM/DD/YYYY)");
 
 
 
@@ -13,7 +14,13 @@ $("#search").click(function() {
         type: "get",
         url: queryUrl + searchTerm + apiKey,
         success: function(response) {
-            console.log(response);
+            var tempF = (response.list[0].main.temp - 273.15) * 1.80 + 32;
+            $("#todaysForecast").append('<li>' + response.city.name + ' ' + date + '</li>');
+            $("#todaysForecast").append('<li>Temperature: ' + tempF.toFixed(2) + ' °F</li>');
+            $("#todaysForecast").append('<li>Humidity: ' + response.list[0].main.humidity + '%</li>');
+            $("#todaysForecast").append('<li>Wind Speed: ' + response.list[0].wind.speed + ' MPH</li>');
+            $("#todaysForecast").append('<li>UV Index: </li>');
+
         }
     });
 });
