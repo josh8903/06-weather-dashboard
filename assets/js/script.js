@@ -1,8 +1,8 @@
 var queryUrl = "https://api.openweathermap.org/data/2.5/forecast?q=",
     queryUrlUv = "https://api.openweathermap.org/data/2.5/uvi?",
     apiKey = "&appid=6cc8bbd0f9c3b88ec510c02440bb3c5a",
-    m = moment().format("(MM/DD/YYYY)"),
-    mObj = moment(m, "(MM/DD/YYYY)");
+    m = moment().format("(MM/DD/YYYY)");
+
 
 // on click search button
 $("#search").click(function() {
@@ -41,7 +41,8 @@ $("#search").click(function() {
             $("#fiveDay").empty();
             for (let i = 1; i < 6; i++) {
                 var tempF = (response.list[i * 8 - 1].main.temp - 273.15) * 1.80 + 32,
-                    date = mObj.add(1, "days").format("MM/DD/YYYY");
+                    mObj = moment(m, "(MM/DD/YYYY)"),
+                    date = mObj.add(i, "days").format("MM/DD/YYYY");
                 $("#fiveDay").append('<div class="dayCard" id="dayCard' + i + '"></div>');
                 $("#dayCard" + i).append('<ul id="dayCardList' + i + '"></ul>');
                 $("#dayCardList" + i).append('<li class="fiveDayDate">' + date + '</li>')
@@ -88,7 +89,8 @@ $(document).on('click', "#cityButton", function() {
             $("#fiveDay").empty();
             for (let i = 1; i < 6; i++) {
                 var tempF = (response.list[i * 8 - 1].main.temp - 273.15) * 1.80 + 32,
-                    date = mObj.add(1, "days").format("MM/DD/YYYY");
+                    mObj = moment(m, "(MM/DD/YYYY)"),
+                    date = mObj.add(i, "days").format("MM/DD/YYYY");
                 $("#fiveDay").append('<div class="dayCard" id="dayCard' + i + '"></div>');
                 $("#dayCard" + i).append('<ul id="dayCardList' + i + '"></ul>');
                 $("#dayCardList" + i).append('<li class="fiveDayDate">' + date + '</li>')
@@ -135,7 +137,8 @@ window.onload = function() {
             $("#fiveDay").empty();
             for (let i = 1; i < 6; i++) {
                 var tempF = (response.list[i * 8 - 1].main.temp - 273.15) * 1.80 + 32,
-                    date = mObj.add(1, "days").format("MM/DD/YYYY");
+                    mObj = moment(m, "(MM/DD/YYYY)"),
+                    date = mObj.add(i, "days").format("MM/DD/YYYY");
                 $("#fiveDay").append('<div class="dayCard" id="dayCard' + i + '"></div>');
                 $("#dayCard" + i).append('<ul id="dayCardList' + i + '"></ul>');
                 $("#dayCardList" + i).append('<li class="fiveDayDate">' + date + '</li>')
