@@ -1,16 +1,19 @@
 var queryUrl = "https://api.openweathermap.org/data/2.5/forecast?q=",
     queryUrlUv = "https://api.openweathermap.org/data/2.5/uvi?",
     apiKey = "&appid=6cc8bbd0f9c3b88ec510c02440bb3c5a",
-    m = moment().format("(MM/DD/YYYY)");
+    m = moment().format("(MM/DD/YYYY)"),
+    buttonCount = 0;
 
 // on click search button
-// save search term to local storage
-// run search by text entry
 $("#search").click(function() {
     event.preventDefault()
+    buttonCount++
+    if (buttonCount > 8) {
+        $("#cities").children("button:last").remove();
+    }
     var searchTerm = $("input").val();
     localStorage.setItem("searchTerm", searchTerm);
-    $("input").val('');
+    $("input").val("");
     $("#cities").prepend(`
     <button id="cityButton" type="button" class="btn btn-light">${searchTerm}</button>
     `);
@@ -18,21 +21,19 @@ $("#search").click(function() {
 });
 
 // on click previous search buttons
-// run search by button text
 $(document).on('click', "#cityButton", function() {
     var searchTerm = $(this).text();
     run(searchTerm);
 });
 
-// on window load run search by most revent search term
+// on window load
 window.onload = function() {
     var searchTerm = localStorage.getItem("searchTerm");
     run(searchTerm);
 };
 
 function run(searchTerm) {
-    // main weather ajax
-    // append todays forecast data to #todaysForecast div
+    // todays forecast
     $.ajax({
         type: "get",
         url: queryUrl + searchTerm + apiKey,
@@ -47,8 +48,6 @@ function run(searchTerm) {
                 <li>Humidity: ${response.list[0].main.humidity}%</li>
                 <li>Wind Speed: ${response.list[0].wind.speed} MPH</li>
             `);
-            // uv index ajax, uses lat&lon values from main weather ajax
-            // append uv data to #todaysForecast div
             $.ajax({
                 type: "get",
                 url: queryUrlUv + "lat=" + lat + "&lon=" + lon + apiKey,
@@ -56,7 +55,6 @@ function run(searchTerm) {
                     $("#todaysForecast").append(`
                         <li>UV Index: <button id="uvIndexSeverity" type="button">${response.value}</button></li>
                     `);
-                    // colorize uv index data by severity -- bootstrap buttons
                     if (response.value < 4) {
                         $("#uvIndexSeverity").addClass("btn btn-success");
                     }
@@ -68,7 +66,7 @@ function run(searchTerm) {
                     }
                 }
             });
-            // append five day weather cards to #fiveDay div
+            // five day forecast
             $("#fiveDay").empty();
             for (let i = 1; i < 6; i++) {
                 var tempF = (response.list[i * 8 - 1].main.temp - 273.15) * 1.80 + 32,
