@@ -14,47 +14,41 @@
     Weather Dashboard
 </header>
 
-<div class="container">
-    <div class="row">
-        <!-- search wrapper -->
-        <div id="searchCol" class="col-3">
-            <!-- search -->
-            <div class="row">
-                <h5>Search for a City:</h5>
-                <form id="searchBar" class="form-inline">
-                    <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-                    <button id="search" class="btn btn-primary my-2 my-sm-0" type="submit"><i class="fa fa-search"></i></button>
-                </form>
-            </div>
-            <div class="row">
-                <div id="cities" class="btn-group-vertical">
-                    <!-- City buttons - previous searches -->
+<body>
+    <div class="container">
+        <div class="row">
+            <!-- search wrapper -->
+            <div id="searchCol" class="col-3">
+                <!-- search -->
+                <div class="row">
+                    <h5>Search for a City:</h5>
+                    <form id="searchBar" class="form-inline">
+                        <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+                        <button id="search" class="btn btn-primary my-2 my-sm-0" type="submit"><i class="fa fa-search"></i></button>
+                    </form>
+                </div>
+                <div class="row">
+                    <div id="cities" class="btn-group-vertical">
+                        <!-- City buttons - previous searches -->
+                    </div>
                 </div>
             </div>
-        </div>
-        <!-- weather info wrapper -->
-        <div id="weatherCol" class="col-9">
-
-            <div class="row">
-                <div id="todayCard" class="col">
-                    <ul id="todaysForecast">
-                        <!-- todays forecast -->
-                        Welcome to Weather Dashboard! Search for a city to get started!
-                    </ul>
+            <!-- weather info wrapper -->
+            <div id="weatherCol" class="col-9">
+                <div class="row">
+                    <div id="todayCard" class="col">
+                        <ul id="todaysForecast">
+                            <!-- todays forecast -->
+                            <h6>Welcome to Weather Dashboard! Search for a city to get started!</h6>
+                        </ul>
+                    </div>
                 </div>
-            </div>
-            <div id="fiveDay" class="row">
-                <!-- five day forecast -->
-
+                <div id="fiveDay" class="row">
+                    <!-- five day forecast -->
+                </div>
             </div>
         </div>
     </div>
-</div>
-
-<body>
-
-
-
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
     <script src="./assets/js/script.js"></script>
