@@ -1,5 +1,5 @@
-var queryUrl = "http://api.openweathermap.org/data/2.5/forecast?q=",
-    queryUrlUv = "http://api.openweathermap.org/data/2.5/uvi?",
+var queryUrl = "https://api.openweathermap.org/data/2.5/forecast?q=",
+    queryUrlUv = "https://api.openweathermap.org/data/2.5/uvi?",
     apiKey = "&appid=6cc8bbd0f9c3b88ec510c02440bb3c5a",
     m = moment().format("(MM/DD/YYYY)"),
     mObj = moment(m, "(MM/DD/YYYY)");
