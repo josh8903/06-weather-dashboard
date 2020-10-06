@@ -48,8 +48,7 @@ ul {
 }
 
 input {
-    max-width: 250px;
-    min-width: 100px;
+    max-width: 200px;
 }
 
 #cityButton {
